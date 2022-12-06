@@ -20,7 +20,7 @@ concurrency:
 jobs:
   release-please:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.repository_owner == 'wnfs-wg'
+    if: github.ref == 'refs/heads/main' && github.repository_owner == 'zeeshanlakhani'
 
     outputs:
       releases_created: ${{ steps.release.outputs['wnfs--release-created'] || steps.release.outputs['wnfs-wasm--release-created'] }}
