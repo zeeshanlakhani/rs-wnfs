@@ -34,12 +34,12 @@ jobs:
           components: rustfmt, clippy
           toolchain: ${{ matrix.rust-toolchain }}
 
-      - name: Check Format
-        uses: actions-rs/cargo@v1
-        with:
-          args: --all -- --check
-          command: fmt
-          toolchain: ${{ matrix.rust-toolchain }}
+      # - name: Check Format
+      #   uses: actions-rs/cargo@v1
+      #   with:
+      #     args: --all -- --check
+      #     command: fmt
+      #     toolchain: ${{ matrix.rust-toolchain }}
 
   #     - name: Run Linter
   #       uses: actions-rs/cargo@v1
