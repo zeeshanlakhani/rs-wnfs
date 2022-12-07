@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.11](https://github.com/zeeshanlakhani/rs-wnfs/compare/wnfs-v0.1.10...wnfs-v0.1.11) (2022-12-07)
+
+
+### Bug Fixes
+
+* fix ([d1f2c42](https://github.com/zeeshanlakhani/rs-wnfs/commit/d1f2c4281111b9f1661f7e88d60245a73d90753c))
+
 ## [0.1.10](https://github.com/zeeshanlakhani/rs-wnfs/compare/wnfs-v0.1.10...wnfs-v0.1.10) (2022-12-06)
 
 
