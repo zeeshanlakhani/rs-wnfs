@@ -1,5 +1,9 @@
 # Changelog
 
+* The following workspace dependencies were updated
+  * dependencies
+    * wnfs bumped from 0.1.10 to 0.1.11
+
 ## [0.1.10](https://github.com/zeeshanlakhani/rs-wnfs/compare/wnfs-wasm-v0.1.10...wnfs-wasm-v0.1.10) (2022-12-06)
 
 
