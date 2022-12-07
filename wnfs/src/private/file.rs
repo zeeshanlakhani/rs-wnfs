@@ -116,7 +116,7 @@ impl PrivateFile {
     ///     Utc::now(),
     ///     rng,
     /// );
-    /// ok hello hello
+    /// ok hello hello my friend
     ///
     /// println!("file = {:?}", file);
     /// ```

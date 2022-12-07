@@ -23,7 +23,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.repository_owner == 'zeeshanlakhani'
 
     outputs:
-      releases_created: ${{ steps.release.outputs['wnfs--release-created'] || steps.release.outputs['wnfs-wasm--release-created'] || steps.release.outputs['wnfs-bench--release-created'] }}
+      releases_created: ${{ steps.release.outputs['wnfs--release_created'] || steps.release.outputs['wnfs-wasm--release_created'] || steps.release.outputs['wnfs-bench--release_created'] }}
 
     steps:
       - name: Run release-please
