@@ -41,85 +41,85 @@ jobs:
           command: fmt
           toolchain: ${{ matrix.rust-toolchain }}
 
-      - name: Run Linter
-        uses: actions-rs/cargo@v1
-        with:
-          args: --workspace -- -D warnings
-          command: clippy
-          toolchain: ${{ matrix.rust-toolchain }}
+  #     - name: Run Linter
+  #       uses: actions-rs/cargo@v1
+  #       with:
+  #         args: --workspace -- -D warnings
+  #         command: clippy
+  #         toolchain: ${{ matrix.rust-toolchain }}
 
-      - name: Install Cargo Audit
-        uses: "actions-rs/cargo@v1"
-        with:
-          args: "--force cargo-audit"
-          command: install
+  #     - name: Install Cargo Audit
+  #       uses: "actions-rs/cargo@v1"
+  #       with:
+  #         args: "--force cargo-audit"
+  #         command: install
 
-      - name: Run Audit on Deps
-        run: cargo-audit audit
+  #     - name: Run Audit on Deps
+  #       run: cargo-audit audit
 
-      # Only "test" release build on push event.
-      - name: Test Release
-        if: github.event_name == 'push'
-        run: cargo build --release
+  #     # Only "test" release build on push event.
+  #     - name: Test Release
+  #       if: github.event_name == 'push'
+  #       run: cargo build --release
 
-  rust-tests:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        rust-toolchain:
-          - stable
-          - nightly
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+  # rust-tests:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       rust-toolchain:
+  #         - stable
+  #         - nightly
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v3
 
-      - name: Cache Project
-        uses: Swatinem/rust-cache@v2
+  #     - name: Cache Project
+  #       uses: Swatinem/rust-cache@v2
 
-      - name: Run Tests
-        run: cargo test --all-features
+  #     - name: Run Tests
+  #       run: cargo test --all-features
 
-  wasm-js-tests:
-    strategy:
-      fail-fast: false
-      matrix:
-        rust-toolchain:
-          - stable
-          - nightly
+  # wasm-js-tests:
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       rust-toolchain:
+  #         - stable
+  #         - nightly
 
-    runs-on: macos-latest
+  #   runs-on: macos-latest
 
-    defaults:
-      run:
-        working-directory: ./wnfs-wasm
+  #   defaults:
+  #     run:
+  #       working-directory: ./wnfs-wasm
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v3
 
-      - name: Cache Project (JavaScript)
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
+  #     - name: Cache Project (JavaScript)
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16.x'
 
-      - name: Cache Project (Rust)
-        uses: Swatinem/rust-cache@v2
+  #     - name: Cache Project (Rust)
+  #       uses: Swatinem/rust-cache@v2
 
-      - name: Install Wasm Pack
-        uses: "actions-rs/cargo@v1"
-        with:
-          args: "--force wasm-pack"
-          command: install
+  #     - name: Install Wasm Pack
+  #       uses: "actions-rs/cargo@v1"
+  #       with:
+  #         args: "--force wasm-pack"
+  #         command: install
 
-      - name: Setup WebAssembly Toolchain
-        run: rustup target add wasm32-unknown-unknown
+  #     - name: Setup WebAssembly Toolchain
+  #       run: rustup target add wasm32-unknown-unknown
 
-      - name: Install Node Dependencies
-        run: yarn
+  #     - name: Install Node Dependencies
+  #       run: yarn
 
-      - name: Install Playwright
-        run: npx playwright install --with-deps
+  #     - name: Install Playwright
+  #       run: npx playwright install --with-deps
 
-      - name: Run Playwright Tests
-        run: yarn playwright test
+  #     - name: Run Playwright Tests
+  #       run: yarn playwright test
